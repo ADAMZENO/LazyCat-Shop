@@ -1,56 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LazyCat Shop</title>
-    <link rel="stylesheet" href="2.css"> <!-- ตรวจสอบว่า path ถูกต้อง -->
-</head>
-<body>
-    <header>
-        <div class="logo-container">
-            <img src="image.png" alt="Lazy Cat Logo" class="logo-image"> <!-- ตรวจสอบ path ของรูปภาพ -->
-            <div class="logo-text">LazyCat</div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section id="home" class="hero">
-        <h1>Welcome to LazyCat Shop</h1>
-        <p>Shop the latest trends with us!</p>
-        <a href="#products" class="btn">Shop Now</a>
-    </section>
-    
-    <section id="products" class="products">
-        <h2>Our Products</h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="fcd9d830-55d0-4283-8453-66d9baa23a44.jpg" alt="Product 1">
-                <h3>BLACK KURUMI DATE A LIVE</h3>
-                <p>$0</p>
-            </div>
-            <div class="product">
-                <img src="28e36e2e-4ee2-4c94-b28a-96127e72dfde.jpg" alt="Product 2">
-                <h3>KURUMI DATE A LIVE</h3>
-                <p>$0</p>
-            </div>
-            <div class="product">
-                <img src="49859562-13b4-4704-aeb4-cf241159e19c.jpg" alt="Product 3">
-                <h3>WHITE QUEEN DATE A LIVE</h3>
-                <p>$0</p>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <p>&copy; 2024 All rights reserved.</p>
-    </footer>
-</body>
-</html>
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #333;
+    color: white;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-image {
+    width: 100px;
+    height: auto;
+}
+
+.logo-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    text-align: center;
+    background: #f4f4f4;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.hero .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.products {
+    padding: 2rem;
+    text-align: center;
+}
+
+.products .product-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.products .product {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.products .product img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 18px; /* ขนาดฟอนต์สำหรับหน้าจอใหญ่ */
+    }
+}
+
+/* สำหรับหน้าจอที่มีความกว้างน้อยกว่าหรือเท่ากับ 768px (มือถือ) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* ขนาดฟอนต์สำหรับหน้าจอเล็ก */
+    }
+
+    .logo-text {
+        font-size: 24px; /* ขนาดโลโก้เล็กลงเมื่อดูบนมือถือ */
+    }
+}
