@@ -4,35 +4,47 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    box-sizing: border-box; /* เพิ่มการตั้งค่า box-sizing */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit; /* เพิ่มการตั้งค่า box-sizing เพื่อให้ทุก element ใช้ค่าเดียวกัน */
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 2rem;
+    padding: 1rem 2rem; /* ปรับ padding เล็กน้อย */
     background-color: #333;
     color: white;
 }
+
 .logo-container {
     display: flex;
     align-items: center;
     gap: 10px; 
 }
+
 .logo-image {
-    width: 100px; 
-    height: auto; 
+    width: 80px; /* ปรับขนาดโลโก้เล็กลง */
+    height: auto;
 }
+
 .logo-text {
-    font-size: 30px; 
-    font-weight: bold; 
-    color: white; 
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
 }
+
 header .logo {
     font-size: 48px;
     font-weight: bold;
     justify-content: center;
-
+    display: flex;
+    align-items: center; /* ทำให้โลโก้อยู่ตรงกลาง */
 }
 
 header nav ul {
@@ -95,6 +107,8 @@ footer {
     background-color: #333;
     color: white;
 }
+
+/* สำหรับหน้าจอที่มีความกว้างมากกว่า 768px (เดสก์ท็อป) */
 @media (min-width: 768px) {
     body {
         font-size: 18px; /* ขนาดฟอนต์สำหรับหน้าจอใหญ่ */
@@ -107,7 +121,33 @@ footer {
         font-size: 14px; /* ขนาดฟอนต์สำหรับหน้าจอเล็ก */
     }
 
+    .logo-container {
+        flex-direction: column; /* เปลี่ยนทิศทางการแสดงผลของโลโก้ */
+        align-items: center;
+    }
+
     .logo-text {
         font-size: 24px; /* ขนาดโลโก้เล็กลงเมื่อดูบนมือถือ */
+    }
+
+    header {
+        flex-direction: column; /* เปลี่ยนทิศทางการจัดเรียงใน header ให้เป็นแนวตั้ง */
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column; /* เปลี่ยนทิศทางของเมนูให้อยู่ในแนวตั้ง */
+    }
+
+    header nav ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* ขนาดตัวอักษรใน hero เล็กลงบนมือถือ */
+    }
+
+    .hero .btn {
+        padding: 0.5rem 1rem;
     }
 }
