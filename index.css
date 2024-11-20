@@ -10,26 +10,29 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem;
+    padding: 2rem 2rem;
     background-color: #333;
     color: white;
 }
-
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px; 
 }
-
 .logo-image {
-    width: 100px;
-    height: auto;
+    width: 100px; 
+    height: auto; 
 }
-
 .logo-text {
-    font-size: 30px;
+    font-size: 30px; 
+    font-weight: bold; 
+    color: white; 
+}
+header .logo {
+    font-size: 48px;
     font-weight: bold;
-    color: white;
+    justify-content: center;
+
 }
 
 header nav ul {
@@ -92,10 +95,9 @@ footer {
     background-color: #333;
     color: white;
 }
-
 @media (min-width: 768px) {
     body {
-        font-size: 18px; 
+        font-size: 18px;
     }
 }
 
