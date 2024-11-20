@@ -1,0 +1,113 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem;
+    background-color: #333;
+    color: white;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+.logo-image {
+    width: 100px; 
+    height: auto; 
+}
+.logo-text {
+    font-size: 30px; 
+    font-weight: bold; 
+    color: white; 
+}
+header .logo {
+    font-size: 48px;
+    font-weight: bold;
+    justify-content: center;
+
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    text-align: center;
+    background: #f4f4f4;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.hero .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.products {
+    padding: 2rem;
+    text-align: center;
+}
+
+.products .product-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.products .product {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.products .product img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+}
+@media (min-width: 768px) {
+    body {
+        font-size: 18px; /* ขนาดฟอนต์สำหรับหน้าจอใหญ่ */
+    }
+}
+
+/* สำหรับหน้าจอที่มีความกว้างน้อยกว่าหรือเท่ากับ 768px (มือถือ) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* ขนาดฟอนต์สำหรับหน้าจอเล็ก */
+    }
+
+    .logo-text {
+        font-size: 24px; /* ขนาดโลโก้เล็กลงเมื่อดูบนมือถือ */
+    }
+}
