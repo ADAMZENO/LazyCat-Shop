@@ -95,17 +95,17 @@ footer {
 
 @media (min-width: 768px) {
     body {
-        font-size: 18px; /* ขนาดฟอนต์สำหรับหน้าจอใหญ่ */
+        font-size: 18px; 
     }
 }
 
-/* สำหรับหน้าจอที่มีความกว้างน้อยกว่าหรือเท่ากับ 768px (มือถือ) */
+
 @media (max-width: 768px) {
     body {
-        font-size: 14px; /* ขนาดฟอนต์สำหรับหน้าจอเล็ก */
+        font-size: 14px; 
     }
 
     .logo-text {
-        font-size: 24px; /* ขนาดโลโก้เล็กลงเมื่อดูบนมือถือ */
+        font-size: 24px; 
     }
 }
