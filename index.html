@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LazyCat shop</title>
-    <link rel="stylesheet" href="index.css">
+    <title>LazyCat Shop</title>
+    <link rel="stylesheet" href="2.css">
 </head>
 <body>
     <header>
@@ -12,6 +12,15 @@
             <img src="image.png" alt="Lazy Cat Logo" class="logo-image">
             <div class="logo-text">LazyCat</div>
         </div>
+
+        <!-- Search Box -->
+        <div class="search-container">
+            <form action="/search" method="get" class="search-form">
+                <input type="text" name="query" placeholder="Search products..." class="search-box">
+                <button type="submit" class="search-button">🔍</button>
+            </form>
+        </div>
+
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -24,7 +33,7 @@
     
     <section id="home" class="hero">
         <h1>Welcome to LazyCat Shop</h1>
-        <p>Shop the latest trends with us!</p>
+        <p>Your ultimate destination for trendy clothing!</p>
         <a href="#products" class="btn">Shop Now</a>
     </section>
     
@@ -32,22 +41,22 @@
         <h2>Our Products</h2>
         <div class="product-list">
             <div class="product">
-                <img src="fcd9d830-55d0-4283-8453-66d9baa23a44.jpg" alt="Product 1">
-                <h3>BLACK KURUMI DATE A LIVE</h3>
+                <img src="fcd9d830-55d0-4283-8453-66d9baa23a44.jpg" alt="Black Kurumi Outfit">
+                <h3>Black Kurumi Outfit</h3>
             </div>
             <div class="product">
-                <img src="28e36e2e-4ee2-4c94-b28a-96127e72dfde.jpg" alt="Product 2">
-                <h3>KURUMI DATE A LIVE</h3>
+                <img src="28e36e2e-4ee2-4c94-b28a-96127e72dfde.jpg" alt="Kurumi Casual">
+                <h3>Kurumi Casual Wear</h3>
             </div>
             <div class="product">
-                <img src="49859562-13b4-4704-aeb4-cf241159e19c.jpg" alt="Product 3">
-                <h3>WHITE QUEEN DATE A LIVE</h3>
+                <img src="49859562-13b4-4704-aeb4-cf241159e19c.jpg" alt="White Queen Dress">
+                <h3>White Queen Dress</h3>
             </div>
         </div>
     </section>
     
     <footer>
-        <p>&copy; 2024 All rights reserved.</p>
+        <p>&copy; 2024 LazyCat Shop. All rights reserved.</p>
     </footer>
 </body>
 </html>
