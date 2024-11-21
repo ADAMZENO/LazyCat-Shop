@@ -14,7 +14,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background-color: #4c0070;
+    background-color: #524F54;
     flex-wrap: wrap; /* ให้ส่วน Header ยืดหยุ่น */
 }
 
@@ -96,7 +96,7 @@ header nav ul li a:hover {
 /* Hero Section Styles */
 .hero {
     text-align: center;
-    background: linear-gradient(135deg, hsl(281, 50%, 66%), #c47bf8);
+    background: linear-gradient(135deg, hsl(281, 50%, 66%), #9a74af);
     color: #ffffff;
     padding: 3rem 1rem;
 }
@@ -146,7 +146,7 @@ header nav ul li a:hover {
 }
 
 .products .product {
-    background-color: #b26ad3;
+    background-color: #563f63;
     padding: 1rem;
     border-radius: 8px;
     width: 220px;
@@ -155,7 +155,7 @@ header nav ul li a:hover {
 
 .products .product:hover {
     transform: scale(1.05);
-    background-color: #9751cc;
+    background-color: #b860ec;
 }
 
 .products .product img {
