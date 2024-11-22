@@ -6,7 +6,8 @@ body {
     line-height: 1.6;
     background-color: #1b1b1b;
     color: #dcd3ff;
-    scroll-behavior: smooth; /* เพิ่ม smooth scroll */
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
 }
 
 /* Header styles */
@@ -15,8 +16,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 2rem;
-    background-color: #524F54;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+    background: linear-gradient(135deg, #524F54, #3b393e);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -30,19 +31,19 @@ header {
 
 .logo-image {
     width: 80px;
-    height: auto;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .logo-image:hover {
-    transform: rotate(15deg) scale(1.1);
+    transform: rotate(10deg) scale(1.1);
+    filter: brightness(1.2);
 }
 
 .logo-text {
     font-size: 28px;
     font-weight: bold;
     color: #ffffff;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
 }
 
 header nav ul {
@@ -62,165 +63,155 @@ header nav ul li a {
 
 header nav ul li a:hover {
     color: #f5c3fc;
-    text-shadow: 0 0 10px #f5c3fc;
+    text-shadow: 0 0 12px #f5c3fc;
 }
 
-/* Search Box Styles */
-.search-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.search-form {
-    width: 100%;
-    max-width: 400px;
-    position: relative;
-}
-
-.search-box {
-    width: 100%;
-    padding: 0.6rem 2.5rem 0.6rem 1rem;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    background: linear-gradient(135deg, #ffffff, #e3d7ff);
-    color: #4c0070;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    outline: none;
-    transition: box-shadow 0.3s ease;
-}
-
-.search-box:focus {
-    box-shadow: 0 4px 20px rgba(148, 0, 211, 0.5);
-}
-
-.search-button {
-    position: absolute;
-    right: 15px; /* ปุ่มอยู่ภายในขอบขวาของช่อง */
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0.3rem;
-    border: none;
-    background-color: transparent;
-    color: #8f00ff;
-    font-size: 20px;
-    cursor: pointer;
-    outline: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.search-button:hover {
-    color: #d5aaff;
-    transform: scale(1.2);
-}
-
-/* Hero Section Styles */
+/* Hero Section */
 .hero {
     text-align: center;
-    background: linear-gradient(135deg, hsl(281, 50%, 66%), #9a74af);
+    background: radial-gradient(circle, #9a74af 0%, hsl(281, 50%, 66%) 100%);
     color: #ffffff;
     padding: 4rem 1rem;
     border-radius: 0 0 50px 50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: slideDown 2s ease-out;
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     animation: fadeIn 2s ease-out;
 }
 
 .hero p {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
 .hero .btn {
     display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #8f00ff;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #8f00ff, #d5aaff);
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 25px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero .btn:hover {
-    background-color: #d5aaff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #d5aaff, #8f00ff);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Products Section Styles */
+/* Products Section */
 .products {
     padding: 3rem 2rem;
     text-align: center;
-    background: linear-gradient(135deg, #8e44ad, #cd9eef);
+    background: linear-gradient(135deg, #6a367a, #cd9eef);
+    border-radius: 50px 50px 0 0;
 }
 
 .products h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
     color: #ffffff;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
 }
 
 .products .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 2rem;
+    padding: 0 2rem;
 }
 
 .products .product {
-    background: linear-gradient(135deg, #6a367a, #b860ec);
-    padding: 1.5rem;
-    border-radius: 12px;
-    width: 220px;
+    background: linear-gradient(135deg, #6a367a, #9a74af);
+    padding: 1rem;
+    border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.products .product:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-align: left;
 }
 
 .products .product img {
     width: 100%;
     border-radius: 12px;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.products .product img:hover {
+    transform: scale(1.05);
+}
+
+.products .product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
 .products .product h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #ffffff;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
-/* Footer Styles */
+.products .product p {
+    font-size: 1rem;
+    color: #e3d7ff;
+    margin-top: 0.5rem;
+}
+
+.products .product .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #8f00ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.products .product .btn:hover {
+    background-color: #d5aaff;
+    transform: scale(1.1);
+}
+
+/* Footer Section */
 footer {
     text-align: center;
     padding: 1.5rem;
-    background-color: #ce64ff;
+    background: linear-gradient(135deg, #524F54, #3b393e);
     color: #f0e1ff;
     border-radius: 15px 15px 0 0;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Keyframes */
+/* Animations */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(-20px);
     }
     100% {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
