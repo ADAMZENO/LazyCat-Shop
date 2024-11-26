@@ -1,300 +1,138 @@
-/* General styles */
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #1b1b1b;
-    color: #dcd3ff;
-    scroll-behavior: smooth;
-    overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LazyCat Shop</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="image.png" alt="Lazy Cat Logo" class="logo-image">
+            <div class="logo-text">LazyCat</div>
+        </div>
 
-/* Header styles */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    background: linear-gradient(135deg, #524F54, #3b393e);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-/* Search Box Styles */
-.search-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
+        <!-- Search Box -->
+        <div class="search-container">
+            <form action="/search" method="get" class="search-form">
+                <input type="text" name="query" placeholder="Search products..." class="search-box">
+                <button type="submit" class="search-button">🔍</button>
+            </form>
+        </div>
 
-.search-form {
-    width: 100%;
-    max-width: 400px;
-    position: relative;
-}
-
-.search-box {
-    width: 100%;
-    padding: 0.6rem 2.5rem 0.6rem 1rem; /* Padding ด้านขวาให้เผื่อพื้นที่สำหรับปุ่ม */
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    background-color: #ffffff;
-    color: #4c0070;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    outline: none;
-}
-
-.search-button {
-    position: absolute;
-    left: 410px; /* ปุ่มอยู่ขอบขวาของช่อง */
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0.3rem;
-    border: none;
-    background-color: transparent;
-    color: #4c0070;
-    font-size: 20px;
-    cursor: pointer;
-    outline: none;
-}
-
-/* Product Section Adjustments */
-.products .product {
-    background-color: #563f63;
-    padding: 1rem;
-    border-radius: 8px;
-    width: 220px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.products .product:hover {
-    transform: scale(1.05);
-    background-color: #b860ec; /* คงสีเดิมที่คุณระบุไว้ */
-}
-
-.products .product img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
-
-.products .product h3 {
-    font-size: 1.2rem;
-    color: #ffffff;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logo-image {
-    width: 80px;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.logo-image:hover {
-    transform: rotate(10deg) scale(1.1);
-    filter: brightness(1.2);
-}
-
-.logo-text {
-    font-size: 28px;
-    font-weight: bold;
-    color: #ffffff;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    margin: 0;
-}
-
-header nav ul li a {
-    color: #dcd3ff;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-header nav ul li a:hover {
-    color: #f5c3fc;
-    text-shadow: 0 0 12px #f5c3fc;
-}
-
-/* Hero Section */
-.hero {
-    text-align: center;
-    background: radial-gradient(circle, #9a74af 0%, hsl(281, 50%, 66%) 100%);
-    color: #ffffff;
-    padding: 4rem 1rem;
-    border-radius: 0 0 50px 50px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    animation: slideDown 2s ease-out;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 2s ease-out;
-}
-
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.hero .btn {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, #8f00ff, #d5aaff);
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hero .btn:hover {
-    background: linear-gradient(135deg, #d5aaff, #8f00ff);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
-
-/* Products Section */
-.products {
-    padding: 3rem 2rem;
-    text-align: center;
-    background: linear-gradient(135deg, #6a367a, #cd9eef);
-    border-radius: 50px 50px 0 0;
-}
-
-.products h2 {
-    font-size: 2.8rem;
-    margin-bottom: 3rem;
-    color: #ffffff;
-    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
-}
-
-.products .product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-    padding: 0 2rem;
-}
-
-.products .product {
-    background: linear-gradient(135deg, #6a367a, #9a74af);
-    padding: 1rem;
-    border-radius: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    position: relative;
-    overflow: hidden;
-    text-align: left;
-}
-
-.products .product img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease;
-}
-
-.products .product img:hover {
-    transform: scale(1.05);
-}
-
-.products .product:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-}
-
-.products .product h3 {
-    font-size: 1.4rem;
-    color: #ffffff;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-}
-
-.products .product p {
-    font-size: 1rem;
-    color: #e3d7ff;
-    margin-top: 0.5rem;
-}
-
-.products .product .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background: #8f00ff;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.products .product .btn:hover {
-    background-color: #d5aaff;
-    transform: scale(1.1);
-}
-
-/* Footer Section */
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, #524F54, #3b393e);
-    color: #f0e1ff;
-    border-radius: 15px 15px 0 0;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Animations */
-@keyframes slideDown {
-    0% {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-    }
-
-    header nav ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .search-container {
-        margin: 1rem 0;
-    }
-
-    .search-box {
-        width: 90%;
-    }
-}
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="hero">
+        <h1>Welcome to LazyCat Shop</h1>
+        <p>Your ultimate destination for trendy clothing!</p>
+        <a href="#products" class="btn">Shop Now</a>
+    </section>
+    
+    <section id="products" class="products">
+        <h2>Our Products</h2>
+        <div class="product-list">
+            <!-- แถวที่ 1 -->
+            <div class="product">
+                <img src="fcd9d830-55d0-4283-8453-66d9baa23a44.jpg" alt="Black Kurumi Outfit">
+                <h3>Black Kurumi Outfit</h3>
+            </div>
+            <div class="product">
+                <img src="28e36e2e-4ee2-4c94-b28a-96127e72dfde.jpg" alt="Kurumi Outfit">
+                <h3>Kurumi Outfit</h3>
+            </div>
+            <div class="product">
+                <img src="49859562-13b4-4704-aeb4-cf241159e19c.jpg" alt="White Queen Outfit">
+                <h3>White Queen Outfit</h3>
+            </div>
+            <!-- แถวที่ 2 -->
+            <div class="product">
+                <img src="623b3f71-04da-4a51-8c8f-fe0143fb9a36.jpg" alt="Black Ciel Outfit">
+                <h3>Black Ciel Outfit</h3>
+            </div>
+            <div class="product">
+                <img src="0795eac9-9757-4035-905c-b6f6e9322774.jpg" alt="Lady Ciel Outfit">
+                <h3>Lady Ciel Outfit</h3>
+            </div>
+            <div class="product">
+                <img src="4ffd4345-e15d-4a49-9b55-d8e6e31459c9.jpg" alt="Ciel Yume 100 Outfit">
+                <h3>Ciel Yume 100 Outfit</h3>
+            </div>
+            <!-- แถวที่ 3 -->
+    <div class="product">
+        <img src="3432f99c-b92f-4e0c-9a92-a2aadc83fa46.jpg" alt="Ciel Sun Outfit">
+        <h3>Ciel Sun Outfit</h3>
+    </div>
+    <div class="product">
+        <img src="46cecc44-ca45-42dc-b97f-01ab44398350.jpg" alt="Ciel (New Year) Outfit">
+        <h3>Ciel (New Year) Outfit</h3>
+    </div>
+    <div class="product">
+        <img src="73457381-eaec-4fd0-a352-6f0284211f37.jpg" alt="Columbina Outfit">
+        <h3>Columbina Outfit</h3>
+    </div>
+    <!-- แถวที่ 4 -->
+    <div class="product">
+        <img src="9ca57a23-0ca3-44ea-a795-018bda8fd9e8.jpg" alt="Shinobo Outfit">
+        <h3>Shinobo Outfit</h3>
+    </div>
+    <div class="product">
+        <img src="548c2f9e-2bee-459f-8185-a65287323c09.jpg" alt="Yanfei Outfit">
+        <h3>Yanfei Outfit</h3>
+    </div>
+    <div class="product">
+        <img src="08b6e6f3-163f-46d4-8085-870ec844981d.jpg" alt="Ganyu Outfit">
+        <h3>Ganyu Outfit</h3>
+    </div>
+    <!-- แถวที่ 5 -->
+    <div class="product">
+        <img src="e3228b87-d7b6-46be-8b93-cb22fc16cd88.jpg" alt="Gorou Outfit">
+        <h3>Gorou Outfit</h3>
+    </div>
+    <div class="product">
+        <img src="e1485a90-a068-4e6e-b4cf-e4a0772ad156.jpg" alt="Furina Outfit">
+        <h3>Furina Outfit</h3>
+    </div>
+    <div class="product">
+        <img src="4d818b8e-975e-4602-b44f-a25228bcdbfa.jpg" alt="Krara Outfit">
+        <h3>Krara Outfit</h3>
+    </div>
+    <!-- แถวที่ 6 -->
+    <div class="product">
+        <img src="49ad77d2-4d5a-4628-a3dc-79c9066beccd.jpg" alt="Hua Hua Outfit">
+        <h3>Elegant Black Outfit</h3>
+    </div>
+    <div class="product">
+        <img src="3d14b0c6-f111-4986-8389-16c6db4e6761.jpg" alt="Jane Doe Outfit">
+        <h3>Jane Doe Outfit</h3>
+    </div>
+    <div class="product">
+        <img src="e1c8f312-cad6-433c-afc8-feb3ad18a932.jpg" alt="Nanakusa Outfit">
+        <h3>Nanakusa Outfit</h3>
+    </div>
+    <!-- แถวที่ 7 -->
+<div class="product">
+    <img src="cd0688ad-d839-4a92-a4a6-e1e0ddbfafe5.jpg" alt="Kokushibu Outfit">
+    <h3>Kokushibu Outfit</h3>
+</div>
+<div class="product">
+    <img src="4259f25e-01ee-4a1d-8635-3f140c262e7b.jpg" alt="Black Swan Outfit">
+    <h3>Black Swan Outfit</h3>
+</div>
+</div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 LazyCat Shop. All rights reserved.</p>
+    </footer>
+</body>
+</html>
