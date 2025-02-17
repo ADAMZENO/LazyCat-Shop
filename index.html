@@ -16,32 +16,32 @@
 
         <!-- Search Box -->
         <div class="search-container">
-            <form action="/search" method="get" class="search-form">
-                <input type="text" name="query" placeholder="Search products..." class="search-box">
+            <form action="/search" method="get" class="search-form" id="searchForm">
+                <input type="text" name="query" placeholder="Search products..." class="search-box" id="searchInput">
                 <button type="submit" class="search-button">🔍</button>
             </form>
         </div>
 
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <section id="home" class="hero">
         <h1>Welcome to LazyCat Shop</h1>
         <p>Your ultimate destination for trendy clothing!</p>
-        <a href="#products" class="btn">Shop Now</a>
+     
     </section>
-    
+
     <section id="products" class="products">
         <h2>Our Products</h2>
         <div class="product-list">
-            <!-- แถวที่ 1 -->
+            <!-- Product items here -->
             <div class="product">
                 <img src="fcd9d830-55d0-4283-8453-66d9baa23a44.jpg" alt="Black Kurumi Outfit">
                 <h3>Black Kurumi Outfit</h3>
@@ -131,9 +131,32 @@
 </div>
         </div>
     </section>
-    
-    <footer>
-        <p>&copy; 2024 LazyCat Shop. All rights reserved.</p>
-    </footer>
+
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>Welcome to LazyCat Shop! We are dedicated to providing the best trendy clothing for our customers. Our mission is to make fashion accessible and enjoyable for everyone.</p>
+        <p>Founded in 2024, LazyCat Shop has quickly become a favorite destination for fashion enthusiasts. We offer a wide range of outfits inspired by popular culture and anime.</p>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us!</p>
+        <form class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+   <footer>
+    <p>&copy; 2024 LazyCat Shop. All rights reserved.</p>
+    <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61553249041843">Social Media</a></p>
+</footer>
 </body>
 </html>
