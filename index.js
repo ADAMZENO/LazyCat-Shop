@@ -1,13 +1,43 @@
-document.getElementById("searchForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // ป้องกันการโหลดหน้าใหม่
-    let searchQuery = document.getElementById("searchBox").value.trim(); // ดึงค่าที่พิมพ์ในช่องค้นหา
-
-    if (searchQuery !== "") {
-        alert("คุณกำลังค้นหา: " + searchQuery); // แสดงผลที่พิมพ์ (สามารถเปลี่ยนให้ค้นหาจริงได้)
-        
-        // 🔹 เปลี่ยนไปที่หน้าผลลัพธ์ (เช่น ค้นหาสินค้า)
-        window.location.href = "search.html?q=" + encodeURIComponent(searchQuery);
-    } else {
-        alert("กรุณาพิมพ์สิ่งที่ต้องการค้นหา!");
+document.addEventListener("DOMContentLoaded", function () {
+    // Hide all sections except Home
+    function hideAllSections() {
+        document.querySelectorAll("section").forEach(section => {
+            section.style.display = "none";
+        });
     }
+
+    // Show the selected section
+    function showSection(sectionId) {
+        hideAllSections();
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.style.display = "block";
+        }
+    }
+
+    // Add event listeners to navigation links
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetSection = this.getAttribute("href").substring(1);
+            showSection(targetSection);
+        });
+    });
+
+    // Show Home section by default
+    showSection("home");
+});
+document.getElementById("searchForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the default form submission
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const products = document.querySelectorAll(".product");
+
+    products.forEach(product => {
+        const productName = product.querySelector("h3").textContent.toLowerCase();
+        if (productName.includes(query)) {
+            product.style.display = "block"; // Show matching product
+        } else {
+            product.style.display = "none"; // Hide non-matching product
+        }
+    });
 });
