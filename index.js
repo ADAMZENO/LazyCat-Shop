@@ -26,18 +26,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Show Home section by default
     showSection("home");
-});
-document.getElementById("searchForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent the default form submission
-    const query = document.getElementById("searchInput").value.toLowerCase();
-    const products = document.querySelectorAll(".product");
 
-    products.forEach(product => {
-        const productName = product.querySelector("h3").textContent.toLowerCase();
-        if (productName.includes(query)) {
-            product.style.display = "block"; // Show matching product
+    // ค้นหาสินค้าในหน้า Products
+    document.getElementById("searchForm").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission
+        const query = document.getElementById("searchInput").value.toLowerCase();
+        const products = document.querySelectorAll(".product");
+
+        products.forEach(product => {
+            const productName = product.querySelector("h3").textContent.toLowerCase();
+            product.style.display = productName.includes(query) ? "block" : "none";
+        });
+    });
+
+    // เพิ่ม Scroll Effect ให้ Header
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
         } else {
-            product.style.display = "none"; // Hide non-matching product
+            header.classList.remove('scrolled');
         }
+    });
+
+    // เพิ่ม Parallax Effect ให้ Hero Section
+    window.addEventListener('scroll', () => {
+        const hero = document.querySelector('.hero');
+        let scrollPosition = window.scrollY;
+        hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+    });
+
+    // ฟอร์มติดต่อ (Contact Form) ใช้ SweetAlert
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // ป้องกันการรีโหลดหน้า
+
+        Swal.fire({
+            title: "ส่งแบบฟอร์มสำเร็จแล้ว!",
+            text: "เราจะติดต่อกลับโดยเร็วที่สุด 😊",
+            icon: "success",
+            confirmButtonColor: "#6a0dad"
+        });
+
+        // ล้างค่าฟอร์ม
+        this.reset();
     });
 });
