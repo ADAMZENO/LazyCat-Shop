@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // คำนวณราคาทั้งหมด
     function updateTotal() {
         const total = cart.reduce((sum, item) => sum + parseFloat(item.price.replace("฿", "")) * item.quantity, 0);
-        document.getElementById("cart-total").textContent = `รวม: ฿${total.toFixed(2)}`;
+        document.getElementById("cart-total").textContent = `Total price: ฿${total.toFixed(2)}`;
     }
 
     // ตรวจสอบว่าตะกร้าว่างหรือไม่
