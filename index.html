@@ -6,7 +6,7 @@
     <title>LazyCat Shop</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="index.js"></script>  
+    <script src="index.js" defer></script>
 </head>
 <body>
     <header>
@@ -22,8 +22,9 @@
                 <button type="submit" class="search-button">🔍</button>
             </form>
         </div>
-<!-- ปุ่มเปิดตะกร้าสินค้า -->
-<button id="cart-icon">🛒View Cart</button>
+
+        <!-- Cart Icon -->
+        <button id="cart-icon">🛒View Cart</button>
 
         <nav>
             <ul>
@@ -53,15 +54,16 @@
                 <h3>JANE DOE</h3>
             </div>
         </div>
-        
     </section>
-<!-- Sidebar ตะกร้าสินค้า -->
-<div id="cart-sidebar">
-    <button id="close-cart">✖ Close</button>
-    <h2>View Cart</h2>
-    <div id="cart-items"></div>
-    <p id="cart-total">Total price: ฿0.00</p>
-</div>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar">
+        <button id="close-cart">✖ Close</button>
+        <h2>View Cart</h2>
+        <div id="cart-items"></div>
+        <p id="cart-total">Total price: ฿0.00</p>
+    </div>
+
     <section id="products" class="products">
         <h2>Our Products</h2>
         <div class="product-list">
@@ -194,7 +196,9 @@
 </div>
 </div>
         </div>
+        </div>
     </section>
+
     <section id="about" class="about-section">
         <h2>About Us</h2>
         <p>Welcome to LazyCat Shop! We are dedicated to providing the best trendy clothing for our customers. Our mission is to make fashion accessible and enjoyable for everyone.</p>
@@ -217,10 +221,10 @@
             <button type="submit" class="btn">Send Message</button>
         </form>
     </section>
-    
-   <footer>
-    <p>&copy; 2024 LazyCat Shop. All rights reserved.</p>
-    <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61553249041843">Social Media</a></p>
-</footer>
+
+    <footer>
+        <p>&copy; 2024 LazyCat Shop. All rights reserved.</p>
+        <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61553249041843">Social Media</a></p>
+    </footer>
 </body>
 </html>
