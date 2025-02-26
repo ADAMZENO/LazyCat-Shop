@@ -144,9 +144,10 @@ nav ul li a:hover {
     background: linear-gradient(135deg, #d5aaff, #8f00ff);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
+
 .home-list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(250px, 1fr)); /* 3 ชิ้นในแถวเดียว */
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
     gap: 2rem;
     justify-content: center;
     padding: 2rem;
@@ -348,29 +349,246 @@ footer {
     .search-box {
         width: 90%;
     }
-    footer {
-        text-align: center;
-        padding: 1.5rem;
-        background: linear-gradient(135deg, #524F54, #3b393e);
-        color: #f0e1ff;
-        border-radius: 15px 15px 0 0;
-        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
-        position: relative;
+
+    .home-list {
+        grid-template-columns: repeat(1, 1fr);
     }
-    
-    footer p {
-        margin: 0;
-        font-size: 1.2rem;
-        font-weight: 500;
+
+    .product-list {
+        grid-template-columns: repeat(1, 1fr);
     }
-    
-    footer a {
-        color: #f5c3fc;
-        text-decoration: none;
-        font-weight: bold;
+}
+
+/* ปรับแต่ง Sidebar ตะกร้าสินค้า */
+#cart-sidebar {
+    position: fixed;
+    right: -400px; /* เริ่มต้นให้เลื่อนออกจากขวา */
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background-color: #9a74af; /* สีพื้นหลังเข้ม */
+    color: white;
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1000;
+    font-family: 'Roboto', sans-serif;
+    opacity: 0;
+}
+
+#cart-sidebar.open {
+    right: 0; /* แสดงเมื่อ Sidebar ถูกเปิด */
+    opacity: 1;
+}
+
+/* ส่วนหัวของตะกร้า */
+#cart-sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+    border-bottom: 2px solid #6a0dad; /* เส้นขอบด้านล่าง */
+    padding-bottom: 10px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* กำหนดสไตล์ของสินค้าที่อยู่ในตะกร้า */
+/* สไตล์ของสินค้าในตะกร้า */
+.cart-item {
+    display: flex;
+    align-items: center;
+    background: #6a0dad; /* สีพื้นหลังเข้ม */
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cart-item:hover {
+    background: #9a74af; /* เปลี่ยนสีพื้นหลังเมื่อ Hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.cart-item img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid #6a0dad; /* เส้นขอบสีม่วง */
+}
+
+.cart-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cart-item-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.cart-item-price {
+    font-size: 16px;
+    color: #bdc3c7;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.cart-item-quantity {
+    font-size: 14px;
+    color: #bdc3c7;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.remove-item {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-size: 14px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.remove-item:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+
+/* ราคารวมในตะกร้า */
+#cart-total {
+    margin-top: auto;
+    font-size: 20px;
+    font-weight: 700;
+    border-top: 2px solid #6a0dad;
+    padding-top: 15px;
+    color: #fff;
+    text-align: right;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ปุ่มปิด Sidebar */
+#close-cart {
+    background: #6a0dad;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 100%;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#close-cart:hover {
+    background: #d5aaff;
+    transform: translateY(-2px);
+}
+/* ปรับแต่งปุ่มตะกร้า */
+#cart-icon {
+    background-color: #6a0dad; /* สีม่วงเข้ม */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px; /* ทำให้มุมโค้ง */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#cart-icon:hover {
+    background-color: #9b59b6; /* สีม่วงอ่อน */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#cart-icon:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+/* ปุ่มเพิ่มลงตะกร้า */
+.add-to-cart {
+    background-color: #6a0dad; /* สีม่วงเข้ม */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px; /* ทำให้มุมโค้ง */
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-to-cart:hover {
+    background-color: #9b59b6; /* สีม่วงอ่อน */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.add-to-cart:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ไอคอนในปุ่ม */
+.add-to-cart::before {
+    content: "🛒"; /* ไอคอนตะกร้า */
+    font-size: 18px;
+}
+
+/* เอฟเฟกต์เมื่อเพิ่มสินค้าลงตะกร้า */
+.add-to-cart.added {
+    background-color: #27ae60; /* สีเขียวเมื่อเพิ่มสินค้าแล้ว */
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
     }
-    
-    footer a:hover {
-        text-decoration: underline;
+    50% {
+        transform: translateY(-5px);
     }
+}
+/* Header Scroll Effect */
+header.scrolled {
+    background: rgba(43, 43, 43, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Button Hover Effects */
+.btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
