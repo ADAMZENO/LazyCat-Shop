@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LazyCat Shop</title>
+    <meta name="description" content="LazyCat Shop - Your ultimate destination for trendy cosplay outfits inspired by anime and pop culture.">
+    <meta name="keywords" content="cosplay, anime outfits, trendy clothing, LazyCat Shop">
+    <meta name="author" content="LazyCat Shop">
+    <title>LazyCat Shop - Cosplay Outfits</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap">
     <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/png" href="favicon.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="index.js" defer></script>
 </head>
 <body>
+    <div class="loading-spinner" id="loadingSpinner"></div>
     <header>
         <div class="logo-container">
             <img src="image.png" alt="Lazy Cat Logo" class="logo-image">
             <div class="logo-text">LazyCat</div>
         </div>
 
-        <!-- Search Box -->
         <div class="search-container">
-            <form action="/search" method="get" class="search-form" id="searchForm">
-                <input type="text" name="query" placeholder="Search products..." class="search-box" id="searchInput">
-                <button type="submit" class="search-button">🔍</button>
+            <form class="search-form" id="searchForm">
+                <input type="text" name="query" placeholder="Search cosplay outfits..." class="search-box" id="searchInput">
+                <button type="submit" class="search-button"></button>
             </form>
         </div>
 
-        <!-- Cart Icon -->
-        <button id="cart-icon">🛒View Cart</button>
+        <button id="cart-icon">🛒 Cart (<span id="cart-count">0</span>)</button>
 
         <nav>
             <ul>
@@ -38,36 +42,36 @@
 
     <section id="home" class="hero">
         <h1>Welcome to LazyCat Shop</h1>
-        <p>Your ultimate destination for trendy clothing!</p>
-        <h1 class="home-title">New Collection!</h1>
+        <p>Your ultimate destination for trendy cosplay outfits!</p>
+        <h2 class="home-title">New Collection!</h2>
         <div class="home-list">
             <div class="home-item">
-                <img src="471673832_122171992928108301_6523267251016283255_n.jpg" alt="ELLEN JOE">
-                <h3>ELLEN JOE</h3>
+                <img src="471673832_122171992928108301_6523267251016283255_n.jpg" alt="Ellen Joe Outfit">
+                <h3>Ellen Joe</h3>
             </div>
             <div class="home-item">
-                <img src="70ddd9f7-df82-418e-9b26-ebeb951d0e45.jpg" alt="NAVIA">
-                <h3>NAVIA</h3>
+                <img src="70ddd9f7-df82-418e-9b26-ebeb951d0e45.jpg" alt="Navia Outfit">
+                <h3>Navia</h3>
             </div>
             <div class="home-item">
-                <img src="3d14b0c6-f111-4986-8389-16c6db4e6761.jpg" alt="JANE DOE">
-                <h3>JANE DOE</h3>
+                <img src="3d14b0c6-f111-4986-8389-16c6db4e6761.jpg" alt="Jane Doe Outfit">
+                <h3>Jane Doe</h3>
             </div>
         </div>
+        <button class="explore-btn">Explore Now</button>
     </section>
 
-    <!-- Cart Sidebar -->
     <div id="cart-sidebar">
         <button id="close-cart">✖ Close</button>
-        <h2>View Cart</h2>
+        <h2>Your Cart</h2>
         <div id="cart-items"></div>
-        <p id="cart-total">Total price: ฿0.00</p>
+        <p id="cart-total">Total: ฿0.00</p>
+        <button id="checkout-btn" class="btn">Proceed to Checkout</button>
     </div>
 
     <section id="products" class="products">
-        <h2>Our Products</h2>
+        <h2>Our Cosplay Outfits</h2>
         <div class="product-list">
-            <!-- Product items here -->
             <div class="product" data-id="1"> 
                 <img src="fcd9d830-55d0-4283-8453-66d9baa23a44.jpg" alt="Black Kurumi Outfit">
                 <h3>Black Kurumi Outfit</h3>
@@ -86,7 +90,6 @@
                 <p class="price">฿500.00</p>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
-            <!-- แถวที่ 2 -->
             <div class="product" data-id="4">
                 <img src="623b3f71-04da-4a51-8c8f-fe0143fb9a36.jpg" alt="Black Ciel Outfit">
                 <h3>Black Ciel Outfit</h3>
@@ -105,125 +108,123 @@
                 <p class="price">฿500.00</p>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
-            <!-- แถวที่ 3 -->
-    <div class="product" data-id="7">
-        <img src="3432f99c-b92f-4e0c-9a92-a2aadc83fa46.jpg" alt="Ciel Sun Outfit">
-        <h3>Ciel Sun Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <div class="product" data-id="8">
-        <img src="46cecc44-ca45-42dc-b97f-01ab44398350.jpg" alt="Ciel (New Year) Outfit">
-        <h3>Ciel (New Year) Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <div class="product" data-id="9">
-        <img src="73457381-eaec-4fd0-a352-6f0284211f37.jpg" alt="Columbina Outfit">
-        <h3>Columbina Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <!-- แถวที่ 4 -->
-    <div class="product" data-id="10">
-        <img src="9ca57a23-0ca3-44ea-a795-018bda8fd9e8.jpg" alt="Shinobu Outfit">
-        <h3>Shinobo Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <div class="product" data-id="11">
-        <img src="548c2f9e-2bee-459f-8185-a65287323c09.jpg" alt="Yanfei Outfit">
-        <h3>Yanfei Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <div class="product" data-id="12">
-        <img src="08b6e6f3-163f-46d4-8085-870ec844981d.jpg" alt="Ganyu Outfit">
-        <h3>Ganyu Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <!-- แถวที่ 5 -->
-    <div class="product" data-id="13">
-        <img src="e3228b87-d7b6-46be-8b93-cb22fc16cd88.jpg" alt="Gorou Outfit">
-        <h3>Gorou Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <div class="product" data-id="14">
-        <img src="70ddd9f7-df82-418e-9b26-ebeb951d0e45.jpg" alt="NAVIA Outfit">
-        <h3>NAVIA Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <div class="product" data-id="15">
-        <img src="4d818b8e-975e-4602-b44f-a25228bcdbfa.jpg" alt="Krara Outfit">
-        <h3>Krara Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <!-- แถวที่ 6 -->
-    <div class="product" data-id="16">
-        <img src="49ad77d2-4d5a-4628-a3dc-79c9066beccd.jpg" alt="Hua Hua Outfit">
-        <h3>Elegant Black Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <div class="product" data-id="17">
-        <img src="3d14b0c6-f111-4986-8389-16c6db4e6761.jpg" alt="Jane Doe Outfit">
-        <h3>Jane Doe Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <div class="product" data-id="18">
-        <img src="e1c8f312-cad6-433c-afc8-feb3ad18a932.jpg" alt="Nanakusa Outfit">
-        <h3>Nanakusa Outfit</h3>
-        <p class="price">฿500.00</p>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <!-- แถวที่ 7 -->
-<div class="product" data-id="19">
-    <img src="cd0688ad-d839-4a92-a4a6-e1e0ddbfafe5.jpg" alt="Kokushibu Outfit">
-    <h3>Kokushibu Outfit</h3>
-    <p class="price">฿500.00</p>
-    <button class="add-to-cart">Add to Cart</button>
-</div>
-<div class="product" data-id="20">
-    <img src="4259f25e-01ee-4a1d-8635-3f140c262e7b.jpg" alt="Black Swan Outfit">
-    <h3>Black Swan Outfit</h3>
-    <p class="price">฿500.00</p>
-    <button class="add-to-cart">Add to Cart</button>
-</div>
-</div>
-        </div>
+            <div class="product" data-id="7">
+                <img src="3432f99c-b92f-4e0c-9a92-a2aadc83fa46.jpg" alt="Ciel Sun Outfit">
+                <h3>Ciel Sun Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="8">
+                <img src="46cecc44-ca45-42dc-b97f-01ab44398350.jpg" alt="Ciel (New Year) Outfit">
+                <h3>Ciel (New Year) Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="9">
+                <img src="73457381-eaec-4fd0-a352-6f0284211f37.jpg" alt="Columbina Outfit">
+                <h3>Columbina Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="10">
+                <img src="9ca57a23-0ca3-44ea-a795-018bda8fd9e8.jpg" alt="Shinobu Outfit">
+                <h3>Shinobu Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="11">
+                <img src="548c2f9e-2bee-459f-8185-a65287323c09.jpg" alt="Yanfei Outfit">
+                <h3>Yanfei Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="12">
+                <img src="08b6e6f3-163f-46d4-8085-870ec844981d.jpg" alt="Ganyu Outfit">
+                <h3>Ganyu Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="13">
+                <img src="e3228b87-d7b6-46be-8b93-cb22fc16cd88.jpg" alt="Gorou Outfit">
+                <h3>Gorou Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="14">
+                <img src="70ddd9f7-df82-418e-9b26-ebeb951d0e45.jpg" alt="Navia Outfit">
+                <h3>Navia Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="15">
+                <img src="4d818b8e-975e-4602-b44f-a25228bcdbfa.jpg" alt="Krara Outfit">
+                <h3>Krara Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="16">
+                <img src="49ad77d2-4d5a-4628-a3dc-79c9066beccd.jpg" alt="Hua Hua Outfit">
+                <h3>Elegant Black Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="17">
+                <img src="3d14b0c6-f111-4986-8389-16c6db4e6761.jpg" alt="Jane Doe Outfit">
+                <h3>Jane Doe Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="18">
+                <img src="e1c8f312-cad6-433c-afc8-feb3ad18a932.jpg" alt="Nanakusa Outfit">
+                <h3>Nanakusa Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="19">
+                <img src="cd0688ad-d839-4a92-a4a6-e1e0ddbfafe5.jpg" alt="Kokushibu Outfit">
+                <h3>Kokushibu Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-id="20">
+                <img src="4259f25e-01ee-4a1d-8635-3f140c262e7b.jpg" alt="Black Swan Outfit">
+                <h3>Black Swan Outfit</h3>
+                <p class="price">฿500.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
         </div>
     </section>
 
     <section id="about" class="about-section">
         <h2>About Us</h2>
-        <p>Welcome to LazyCat Shop! We are dedicated to providing the best trendy clothing for our customers. Our mission is to make fashion accessible and enjoyable for everyone.</p>
-        <p>Founded in 2024, LazyCat Shop has quickly become a favorite destination for fashion enthusiasts. We offer a wide range of outfits inspired by popular culture and anime.</p>
+        <p>Welcome to LazyCat Shop! We are passionate about bringing the best cosplay outfits inspired by anime and pop culture to our customers.</p>
+        <p>Founded in 2024, LazyCat Shop has become a go-to destination for cosplay enthusiasts. Our curated collection ensures high-quality, trendy outfits for all fans.</p>
     </section>
 
     <section id="contact" class="contact-section">
         <h2>Contact Us</h2>
-        <p>If you have any questions or need assistance, feel free to reach out to us!</p>
+        <p>Have questions or need help? Reach out to us, and we'll get back to you soon!</p>
         <form id="contactForm" class="contact-form" action="https://formspree.io/f/xgvogwed" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
-            
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-            
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="5" required></textarea>
-            
             <button type="submit" class="btn">Send Message</button>
         </form>
     </section>
+
     <footer>
-        <p>&copy; 2024 LazyCat Shop. All rights reserved.</p>
+        <p>&copy; 2025 LazyCat Shop. All rights reserved.</p>
         <p>Follow us on <a href="https://www.facebook.com/profile.php?id=61553249041843">Social Media</a></p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61553249041843" aria-label="Facebook">📘</a>
+            <a href="https://www.instagram.com/klintdrsrik/?igsh=d3VqZW1tMGJvY2sx#" aria-label="Twitter">🐦</a>
+            <a href="https://www.instagram.com/klintdrsrik/?igsh=d3VqZW1tMGJvY2sx#" aria-label="Instagram">📸</a>
+        </div>
     </footer>
+
+    <button id="back-to-top" title="Back to Top">⬆</button>
 </body>
 </html>
