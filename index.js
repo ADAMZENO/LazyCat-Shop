@@ -1,5 +1,17 @@
+/* index.js */
 document.addEventListener("DOMContentLoaded", function () {
-    // ส่วนของ Navigation และ Section Management
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+    }
+
+    function updateCartCount() {
+        const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('cart-count').textContent = cartCount;
+    }
+
     function hideAllSections() {
         document.querySelectorAll("section").forEach(section => {
             section.style.display = "none";
@@ -19,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             const targetSection = this.getAttribute("href").substring(1);
             showSection(targetSection);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     });
 
     showSection("home");
 
-    // ส่วนของ Search
     document.getElementById("searchForm").addEventListener("submit", function (e) {
         e.preventDefault();
         const query = document.getElementById("searchInput").value.toLowerCase();
@@ -36,38 +48,53 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // ส่วนของ Scroll Effects
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
+        const backToTop = document.getElementById('back-to-top');
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
+            backToTop.style.display = 'block';
         } else {
             header.classList.remove('scrolled');
+            backToTop.style.display = 'none';
         }
     });
 
-    window.addEventListener('scroll', () => {
-        const hero = document.querySelector('.hero');
-        let scrollPosition = window.scrollY;
-        hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+    document.getElementById("back-to-top").addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // ส่วนของ Contact Form
     document.getElementById("contactForm").addEventListener("submit", function (event) {
         event.preventDefault();
-        Swal.fire({
-            title: "ส่งแบบฟอร์มสำเร็จแล้ว!",
-            text: "เราจะติดต่อกลับโดยเร็วที่สุด 😊",
-            icon: "success",
-            confirmButtonColor: "#6a0dad"
-        });
-        this.reset();
+        const spinner = document.getElementById('loadingSpinner');
+        spinner.style.display = 'block';
+        setTimeout(() => {
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                spinner.style.display = 'none';
+                if (response.ok) {
+                    Swal.fire({
+                        title: "Message Sent!",
+                        text: "We'll get back to you soon 😺",
+                        icon: "success",
+                        confirmButtonColor: "#6a0dad"
+                    });
+                    this.reset();
+                } else {
+                    Swal.fire({
+                        title: "Error",
+                        text: "Failed to send message. Please try again.",
+                        icon: "error",
+                        confirmButtonColor: "#6a0dad"
+                    });
+                }
+            });
+        }, 1000);
     });
 
-    // ส่วนของตะกร้าสินค้า
-    let cart = []; // เก็บสินค้าที่เพิ่มลงตะกร้า
-
-    // เปิด/ปิด Sidebar ตะกร้าสินค้า
     document.getElementById("cart-icon").addEventListener("click", function () {
         document.getElementById("cart-sidebar").classList.toggle("open");
     });
@@ -76,7 +103,24 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("cart-sidebar").classList.remove("open");
     });
 
-    // เพิ่มสินค้าไปยังตะกร้า
+    document.getElementById("checkout-btn").addEventListener("click", function () {
+        if (cart.length === 0) {
+            Swal.fire({
+                title: "Empty Cart",
+                text: "Your cart is empty. Add some outfits first!",
+                icon: "warning",
+                confirmButtonColor: "#6a0dad"
+            });
+        } else {
+            Swal.fire({
+                title: "Checkout",
+                text: "Proceeding to checkout (simulated).",
+                icon: "success",
+                confirmButtonColor: "#6a0dad"
+            });
+        }
+    });
+
     document.querySelectorAll(".add-to-cart").forEach(button => {
         button.addEventListener("click", function () {
             const product = this.closest(".product");
@@ -89,8 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (existingItem) {
                 existingItem.quantity++;
                 Swal.fire({
-                    title: "เพิ่มสินค้าสำเร็จ!",
-                    text: `เพิ่ม ${productName} ลงในตะกร้าแล้ว (จำนวน: ${existingItem.quantity})`,
+                    title: "Added to Cart!",
+                    text: `${productName} (x${existingItem.quantity}) added to cart.`,
                     icon: "success",
                     confirmButtonColor: "#6a0dad"
                 });
@@ -103,27 +147,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     quantity: 1
                 });
                 Swal.fire({
-                    title: "เพิ่มสินค้าสำเร็จ!",
-                    text: `เพิ่ม ${productName} ลงในตะกร้าแล้ว`,
+                    title: "Added to Cart!",
+                    text: `${productName} added to cart.`,
                     icon: "success",
                     confirmButtonColor: "#6a0dad"
                 });
             }
 
-            // เพิ่มคลาส "added" เพื่อแสดงเอฟเฟกต์
             this.classList.add("added");
-            setTimeout(() => {
-                this.classList.remove("added");
-            }, 500); // ลบคลาสหลังจาก 0.5 วินาที
-
+            setTimeout(() => this.classList.remove("added"), 500);
             updateCart();
+            saveCart();
         });
     });
 
-    // อัปเดตแสดงผลตะกร้า
     function updateCart() {
         const cartContainer = document.getElementById("cart-items");
-        cartContainer.innerHTML = "";
+        cartContainer.innerHTML = cart.length === 0 ? "<p>Your cart is empty.</p>" : "";
 
         cart.forEach(item => {
             const cartItem = document.createElement("div");
@@ -133,49 +173,57 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="cart-item-details">
                     <span class="cart-item-name">${item.name}</span>
                     <span class="cart-item-price">${item.price}</span>
-                    <span class="cart-item-quantity">จำนวน: ${item.quantity}</span>
+                    <span class="cart-item-quantity">
+                        Quantity: 
+                        <button class="quantity-btn" data-id="${item.id}" data-action="decrease">-</button>
+                        ${item.quantity}
+                        <button class="quantity-btn" data-id="${item.id}" data-action="increase">+</button>
+                    </span>
                 </div>
                 <button class="remove-item" data-id="${item.id}">X</button>
             `;
             cartContainer.appendChild(cartItem);
         });
 
-        // กำหนดปุ่มลบสินค้า
         document.querySelectorAll(".remove-item").forEach(button => {
             button.addEventListener("click", function () {
                 const productId = this.getAttribute("data-id");
                 const productName = cart.find(item => item.id === productId).name;
                 cart = cart.filter(item => item.id !== productId);
-
                 Swal.fire({
-                    title: "Remove from Cart",
-                    text: `ลบ ${productName} ออกจากตะกร้าแล้ว`,
+                    title: "Removed from Cart",
+                    text: `${productName} removed from cart.`,
                     icon: "success",
                     confirmButtonColor: "#6a0dad"
                 });
-
                 updateCart();
+                saveCart();
             });
         });
 
-        // อัปเดตราคาทั้งหมด
+        document.querySelectorAll(".quantity-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const productId = this.getAttribute("data-id");
+                const action = this.getAttribute("data-action");
+                const item = cart.find(item => item.id === productId);
+                if (action === "increase") {
+                    item.quantity++;
+                } else if (action === "decrease" && item.quantity > 1) {
+                    item.quantity--;
+                }
+                updateCart();
+                saveCart();
+            });
+        });
+
         updateTotal();
     }
 
-    // คำนวณราคาทั้งหมด
     function updateTotal() {
         const total = cart.reduce((sum, item) => sum + parseFloat(item.price.replace("฿", "")) * item.quantity, 0);
-        document.getElementById("cart-total").textContent = `Total price: ฿${total.toFixed(2)}`;
+        document.getElementById("cart-total").textContent = `Total: ฿${total.toFixed(2)}`;
     }
 
-    // ตรวจสอบว่าตะกร้าว่างหรือไม่
-    function checkCartEmpty() {
-        if (cart.length === 0) {
-            document.getElementById("cart-items").innerHTML = "<p>Your cart is empty.</p>";
-            document.getElementById("cart-total").textContent = "Total price: ฿0.00";
-        }
-    }
-
-    // เรียกใช้ฟังก์ชันตรวจสอบตะกร้าว่างเมื่อโหลดหน้าเว็บ
-    checkCartEmpty();
+    updateCart();
+    updateCartCount();
 });
